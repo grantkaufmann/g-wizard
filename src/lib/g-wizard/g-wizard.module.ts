@@ -1,24 +1,27 @@
 import {NgModule} from '@angular/core';
-import {GWizardComponent} from './g-wizard.component';
-import {GStepComponent} from './g-step/g-step.component';
 import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
-import {GTemplateModule} from '../g-template/g-template.module';
+import {GTemplateModule} from '../g-template';
+import {GFormModule} from '../g-form';
+import {GWizardComponent} from './g-wizard.component';
+import {GStepModule} from './g-step';
 
 @NgModule({
   imports: [
     GTemplateModule,
     RouterModule,
-    CommonModule
+    CommonModule,
+    GStepModule,
+    GFormModule
   ],
   exports: [
     GTemplateModule,
     GWizardComponent,
-    GStepComponent
+    GStepModule,
+    GFormModule
   ],
   declarations: [
-    GWizardComponent,
-    GStepComponent
+    GWizardComponent
   ]
 })
 export class GWizardModule { }

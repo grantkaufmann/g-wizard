@@ -18,6 +18,7 @@
   <div class="wizard-container">
     <ng-container *ngFor="let wStep of steps; let i = index">
       <a [routerLink]="[baseUrl + '/' + wStep.route]"
+         (click)="showStep(i)"
          [ngClass]="{
           'complete': i < index,
           'disabled' : i >= index,
@@ -37,7 +38,7 @@
   index:{{index}}
   <ng-container *ngTemplateOutlet="getTemplate('header'); context: {$implicit: gWizard}"></ng-container>
   <ng-content></ng-content>
-  <!--<router-outlet></router-outlet>-->
+  <router-outlet></router-outlet>
   <ng-container *ngTemplateOutlet="getTemplate('footer'); context: {$implicit: gWizard}"></ng-container>
 </ng-container>
 

@@ -1,0 +1,6 @@
+<form #modalForm="ngForm" [formGroup]="form">
+  <ng-container *ngTemplateOutlet="getTemplate('header'); context: {$implicit: form}"></ng-container>
+  <ng-container *ngTemplateOutlet="getTemplate('form'); context: {$implicit: form}"></ng-container>
+  <ng-container *ngTemplateOutlet="getTemplate('body'); context: {$implicit: form}"></ng-container>
+  <ng-container *ngTemplateOutlet="getTemplate('footer'); context: {$implicit: form}"></ng-container>
+</form>
