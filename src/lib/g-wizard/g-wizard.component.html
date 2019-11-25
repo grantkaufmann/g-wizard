@@ -1,0 +1,49 @@
+<ng-container *ngIf="debug">
+  <div class="debug-log">
+    <ng-container *ngFor="let log of getDebugLog()">
+      <div class="debug-content">{{log}}</div>
+    </ng-container>
+  </div>
+  <button class="btn-warning" (click)="cancel()">Cancel</button>
+  <button class="btn-primary" (click)="start()">Start</button>
+  <button class="btn-danger" (click)="reset()">Reset</button>
+  <button class="btn-default" (click)="back()">Back</button>
+  <button class="btn-default" (click)="next()">Next</button>
+</ng-container>
+
+<ng-container *ngIf="index <= -1">
+  <ng-container *ngTemplateOutlet="getTemplate('start'); context: {$implicit: gWizard}"></ng-container>
+</ng-container>
+<ng-container *ngIf="index > -1">
+  <div class="wizard-container">
+    <ng-container *ngFor="let wStep of steps; let i = index">
+      <a [routerLink]="[baseUrl + '/' + wStep.route]"
+         [ngClass]="{
+          'complete': i < index,
+          'disabled' : i >= index,
+          'active' : i === index
+          }">
+        <span class="fa-stack fa-1x">
+          <i class="{{wStep.icon}} fa-stack-2x"></i>
+          <ng-container *ngIf="i < index">
+            <i class="fas fa-square fa-stack-1x success success-position"></i>
+            <i class="fas fa-check fa-stack-1x fa-xs success-position checkmark"></i>
+          </ng-container>
+        </span>
+        <label>{{wStep.label}}</label>
+      </a>
+    </ng-container>
+  </div>
+  index:{{index}}
+  <ng-container *ngTemplateOutlet="getTemplate('header'); context: {$implicit: gWizard}"></ng-container>
+  <ng-content></ng-content>
+  <!--<router-outlet></router-outlet>-->
+  <ng-container *ngTemplateOutlet="getTemplate('footer'); context: {$implicit: gWizard}"></ng-container>
+</ng-container>
+
+
+<!--<ng-container *ngFor="let step of getSteps()">-->
+  <!--<g-step [routerLink]="step.routerLink" [show]="step.show">asdfasdf</g-step>-->
+<!--</ng-container>-->
+<!--<button class="btn-primary" (click)="index = index - 1">back</button>-->
+<!--<button class="btn-primary" (click)="index = index + 1">next</button>-->

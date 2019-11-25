@@ -1,0 +1,81 @@
+//  Wizard Step Icon and Label Colors
+$complete-color: #f0daff;
+$disabled-color: grey;
+$active-color: white;
+
+//  Active Step Size Transform
+$current-step-transform: scale(1.1) translateY(-3px);
+
+//  Wizard Checkmark Validation
+$validation-background-color: green;
+$validation-checkmark-color: white;
+$validation-transform: translate(25px, -15px);
+
+.wizard-container {
+  display: flex;
+  width: 100%;
+  color: white;
+  justify-content: space-around;
+}
+
+.wizard-container a {
+  display: flex;
+  flex-direction: column;
+  color: $disabled-color;
+  flex: 1;
+  align-items: center;
+  padding-top: 1em;
+  text-decoration: none;
+  text-align: center;
+  &.complete {
+    color: $complete-color;
+  }
+  &.active {
+    color: $active-color;
+  }
+  &.disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+  &.active.disabled {
+    transform: $current-step-transform;
+    text-decoration: underline;
+  }
+
+  span {}
+
+  label {
+    padding-top: 5px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.success {
+  color: $validation-background-color;
+}
+
+.success-position {
+  transform: $validation-transform;
+}
+
+.checkmark {
+  color: $validation-checkmark-color;
+}
+
+.debug-log {
+  background-color: white;
+  color: black;
+  border: 1px solid;
+  padding: .571em 1em;
+  height: 6em;
+  overflow-y: scroll;
+}
+
+.debug-content {
+  min-height: 1em;
+}
+
